@@ -1,4 +1,4 @@
-# gsa_pipeline
+# GSA pipeline
 * Pipeline for illumina gsa analysis.
 
 ## Deependencies
@@ -26,15 +26,19 @@
 ### Required Files
 * Human reference genome (hg19.fasta)
 
-* bpm_manifest_file (Infinium Global Screening Array Manifest File - BPM Format)
+* bpm_manifest_file (--bpm GSA-24v3-0_A1.bpm, Infinium Global Screening Array Manifest File - BPM Format)
 
-* csv_manifest_file (Infinium Global Screening Array Manifest File - CSV Format)
+* csv_manifest_file (--csv GSA-24v3-0_A1.csv , Infinium Global Screening Array Manifest File - CSV Format)
 
-* egt_cluster_file (Infinium Global Screening Array  Cluster File)
+* egt_cluster_file (--egt GSA-24v3-0_A1_ClusterFile.egt, Infinium Global Screening Array  Cluster File)
 
-* idat_files (All raw idat files in a directory)
+* idat_files (directory having all idat files)
 
-* pheno.txt file with family and individual IDs of case samples in the first two columns
+* phenotype(--pheno pheno.txt) file with family and individual IDs of case samples in the first two columns
+
+* dbsnp database vcf file (--dbsnp_common "common_all_20180418.vcf") with all the common variants
+
+* gene list (--gene_list "gene_list.txt") for selecting markers belonging to the specified category of genes
 
 ## Scripts
 
@@ -84,6 +88,16 @@ usage: bash gsa_pipeline.sh [OPTIONS]
      -p,--pheno <file>        Text file with family and individual IDs of case samples in the first two columns.
 
 ```
+--pheno file example: "pheno.txt"
+
+```
+FID  IID
+0	205247220003_R01C01
+0	205247220003_R01C02
+0	205247220003_R02C01
+0	205247220003_R02C02
+```
+
 ```
 python3 plink_categ_assoc.py -h
 
@@ -104,4 +118,20 @@ optional arguments:
                         plink file with adjusted associations
   --out_file OUT_FILE   output file with gene-list based adjusted associations
 
+```
+
+--gene_list file example: "gene_list.txt"
+
+```
+AAK1
+ABHD17A
+ABHD17B
+ABHD17C
+ABHD6
+ABI1
+ABI2
+ABI3
+ABL1
+ABL2
+ABLIM3
 ```
