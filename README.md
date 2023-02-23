@@ -38,7 +38,7 @@
 
 ## Scripts
 
-**gsa pipeline** has scripts for various gsa data analysis
+**gsa_pipeline** has scripts for various gsa data analysis
 
 The following scripts are available with this repo:
 ```
