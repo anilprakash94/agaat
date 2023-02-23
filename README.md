@@ -1,4 +1,4 @@
-# gsa pipeline
+# gsa_pipeline
 * Pipeline for illumina gsa analysis.
 
 ## Deependencies
