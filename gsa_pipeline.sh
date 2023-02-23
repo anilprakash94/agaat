@@ -1,6 +1,6 @@
 #!/bin/bash
 
-args=$(getopt --options x:b:c:e:i:g:r:rc:p:h --longoptions iaap:bpm:csv:egt:idat:gtc:ref:ref_code:pheno:help -- "$@")
+args=$(getopt --options x:b:c:e:i:g:r:R:p:h --longoptions iaap:bpm:csv:egt:idat:gtc:ref:ref_code:pheno:help -- "$@")
 
 eval set -- "$args"
 
@@ -45,7 +45,7 @@ do
       ref="$2"
       shift 2
       ;;
-    -rc | --ref_code )
+    -R | --ref_code )
       ref_code="$2"
       shift 2
       ;;
@@ -66,7 +66,7 @@ do
 	 -i,--idat <directory>    Directory with all idat files.
 	 -g,--gtc <directory>     Directory for saving gtc output.
 	 -r,--ref <file>          Human reference genome fasta file.
-	 -rc,--ref_code <string>  Human reference genome build code for PLINK : 'b36'/'hg18', 'b37'/'hg19', 'b38'/'hg38'.
+	 -R,--ref_code <string>  Human reference genome build code for PLINK : 'b36'/'hg18', 'b37'/'hg19', 'b38'/'hg38'.
 	 -p,--pheno <file>        Text file with family and individual IDs of case samples in the first two columns."
       exit 2
       ;;
