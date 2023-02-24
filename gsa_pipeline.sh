@@ -12,7 +12,7 @@ idat="idat_files"
 gtc="gtc_files"
 ref="hg19.fasta"
 ref_code="hg19" #human reference genome build code for PLINK : 'b36'/'hg18', 'b37'/'hg19', 'b38'/'hg38'
-pheno="pheno.txt" #pheno.txt file with family and individual IDs of case samples in the first two columns
+pheno="pheno1.txt" #pheno.txt file with family and individual IDs of case samples in the first two columns
 
 while :
 do
@@ -107,9 +107,9 @@ echo "Extracting all_files.vcf from all_files.vcf.gz"
 gzip -d all_files.vcf.gz
 
 echo "Creating plink binary files"
-plink --vcf all_files.vcf --keep-allele-order --vcf-idspace-to _ --const-fid --allow-extra-chr 0 --split-x $ref_code no-fail --allow-no-sex --make-bed --make-pheno $pheno '*' --out MyVars
+plink --vcf all_files.vcf --keep-allele-order --vcf-idspace-to _ --const-fid --allow-extra-chr 0 --split-x $ref_code no-fail --allow-no-sex --make-bed --make-pheno $pheno '*' --out source1
 
 echo "Plink asscoiation test"
 
-plink --assoc counts --adjust --bfile MyVars --allow-no-sex --geno --mind
+plink --assoc counts --adjust --bfile source1 --allow-no-sex --geno --mind
 
