@@ -1,7 +1,7 @@
 # GSA pipeline
 * Pipeline for illumina gsa analysis.
 
-## Deependencies
+## Dependencies
 
 * Python version = 3.8.8
 
@@ -50,6 +50,13 @@ gsa_pipeline.sh
 
 --Bash script pipeline for converting raw idat files into vcf files
 ```
+
+```
+merge_plink.sh
+
+--Bash script pipeline for merging a separate set of vcf files with an existing binary fileset of PLINK
+```
+
 ```
 plink_categ_assoc.py
 
@@ -97,6 +104,19 @@ FID  IID
 0	205247220003_R02C01
 0	205247220003_R02C02
 ```
+
+```
+bash merge_plink.sh -h
+
+usage: bash merge_plink.sh [OPTIONS]
+	 -h,--help                  Prints this message.
+	 -s,--src2_vcf <directory>  Path of directory with vcf files to be added.
+	 -R,--ref_code <string>     Human reference genome build code for PLINK : 'b36'/'hg18', 'b37'/'hg19', 'b38'/'hg38'.
+	 -S,--src1 <file_prefix>    Prefix of existing PLINK binary fileset
+	 -p,--pheno <file>          Phenotype text file of the new fileset with family and individual IDs of case samples in the first two columns.
+
+```
+
 
 ```
 python3 plink_categ_assoc.py -h
