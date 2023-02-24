@@ -5,7 +5,7 @@ args=$(getopt --options s:R:S:p:h --longoptions src2_vcf:ref_code:src1:pheno:hel
 eval set -- "$args"
 
 
-src2_vcf="/media/hmg/InternalHDD/GSA_medgenome/twocases_vcf"
+src2_vcf="/media/hmg/twocases_vcf"
 ref_code="hg19"
 src1="source1"
 pheno="pheno2.txt" #phenotype file of the new dataset with family and individual IDs of case samples in the first two columns
@@ -23,7 +23,7 @@ do
       shift 2
       ;;
     -S | --src1 )
-      ref_code="$2"
+      src1="$2"
       shift 2
       ;;
     -p | --pheno )
