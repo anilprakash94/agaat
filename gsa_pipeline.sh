@@ -111,5 +111,5 @@ plink --vcf all_files.vcf --keep-allele-order --vcf-idspace-to _ --const-fid --a
 
 echo "Plink asscoiation test"
 
-plink --assoc counts --adjust --bfile MyVars --allow-no-sex --geno --mind --fam MyVars.fam
+plink --assoc counts --adjust --bfile MyVars --allow-no-sex --geno --mind
 
