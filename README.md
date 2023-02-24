@@ -34,7 +34,7 @@
 
 * idat_files (directory having all idat files)
 
-* phenotype(--pheno pheno.txt) file with family and individual IDs of case samples in the first two columns
+* phenotype(--pheno pheno1.txt) file with family and individual IDs of case samples in the first two columns
 
 * dbsnp database vcf file (--dbsnp_common "common_all_20180418.vcf") with all the common variants
 
@@ -88,7 +88,7 @@ usage: bash gsa_pipeline.sh [OPTIONS]
      -p,--pheno <file>        Text file with family and individual IDs of case samples in the first two columns.
 
 ```
---pheno file example: "pheno.txt"
+--pheno file example: "pheno1.txt"
 
 ```
 FID  IID
