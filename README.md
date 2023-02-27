@@ -63,6 +63,12 @@ plink_categ_assoc.py
 --Python script for multiple testing correction using genetic variants belonging to a category of genes
 ```
 
+```
+ld_blocks.py
+
+---Python script for multiple testing correction using haplotype blocks estimated by PLINK
+```
+
 
 ## Usage
 
@@ -154,4 +160,37 @@ ABI3
 ABL1
 ABL2
 ABLIM3
+```
+
+Estimate haplotype blocks from the binary filset using plink
+
+```
+usage : plink --blocks 'no-pheno-req' 'no-small-max-span' --blocks-max-kb 500 --bfile bin_prefix
+
+bin_prefix is the prefix of PLINK binary fileset
+
+```
+
+The command above will generate "plink.blocks" file which can be used for LD-based multiple testing correction.
+
+```
+
+Multiple testing correction can be done using independent markers identified from haplotype blocks
+
+python3 ld_blocks.py -h
+
+usage: ld_blocks.py [-h] [--block_file BLOCK_FILE] [--assoc_adj ASSOC_ADJ]
+                    [--out_file OUT_FILE]
+
+Multiple testing correction using haplotype blocks
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --block_file BLOCK_FILE
+                        plink --blocks output file with haplotype blocks and
+                        variant IDs
+  --assoc_adj ASSOC_ADJ
+                        plink file with adjusted associations
+  --out_file OUT_FILE   output file with ld-block based adjusted associations
+
 ```
