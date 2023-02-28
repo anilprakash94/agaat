@@ -72,7 +72,7 @@ ld_blocks.py
 
 ## Usage
 
-### Running the model
+### Running the software
 
 ```
 git clone https://github.com/anilprakash94/gsa_pipeline.git gsa_pipeline
