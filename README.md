@@ -162,12 +162,14 @@ ABL2
 ABLIM3
 ```
 
-Estimate haplotype blocks from the binary filset using plink
+Estimate haplotype blocks from the binary fileset using plink
 
 ```
 usage : plink --blocks 'no-pheno-req' 'no-small-max-span' --blocks-max-kb 500 --bfile bin_prefix
 
-bin_prefix is the prefix of PLINK binary fileset
+--bfile bin_prefix is the prefix of PLINK binary fileset
+
+--blocks-max-kb is the maximum kilobase limit, variant pairs within this limit are only considered
 
 ```
 
