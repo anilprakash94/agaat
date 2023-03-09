@@ -1,14 +1,15 @@
 #!/bin/bash
 
-args=$(getopt --options s:R:S:p:h --longoptions src2_vcf:ref_code:src1:pheno:help -- "$@")
+args=$(getopt --options s:R:S:p:t:h --longoptions src2_vcf:ref_code:src1:pheno:thresh:help -- "$@")
 
 eval set -- "$args"
 
 
-src2_vcf="/media/hmg/extra_vcf"
+src2_vcf="/media/hmg/InternalHDD/GSA_medgenome/twocases_vcf"
 ref_code="hg19"
 src1="source1"
 pheno="pheno2.txt" #phenotype file of the new dataset with family and individual IDs of case samples in the first two columns
+thresh="1e-5"
 
 
 while :
@@ -30,6 +31,10 @@ do
       pheno="$2"
       shift 2
       ;;
+    -t | --thresh )
+      thresh="$2"
+      shift 2
+      ;;
     -h | --help)
       echo "For merging a separate set of vcf files with an existing binary fileset of PLINK.
       merge_plink Command-line Arguments
@@ -39,7 +44,8 @@ do
 	 -s,--src2_vcf <directory>  Path of directory with vcf files to be added.
 	 -R,--ref_code <string>     Human reference genome build code for PLINK : 'b36'/'hg18', 'b37'/'hg19', 'b38'/'hg38'.
 	 -S,--src1 <file_prefix>    Prefix of existing PLINK binary fileset
-	 -p,--pheno <file>          Phenotype text file of the new fileset with family and individual IDs of case samples in the first two columns."
+	 -p,--pheno <file>          Phenotype text file of the new fileset with family and individual IDs of case samples in the first two columns.
+         -t,--thresh <float>        p-value threshold of Hardy-Weinberg equilibrium test for filtering out variants."
       exit 2
       ;;
     --)
@@ -91,11 +97,14 @@ if test -f "$file"; then
 
     rm source2_tmp.*
 
-    plink --assoc counts --adjust --bfile final_merge --allow-no-sex --geno --mind
+    plink --hwe $thresh 'midp' --bfile final_merge --make-bed --out hwe_filter
+    
+    plink --assoc counts --adjust --bfile hwe_filter --allow-no-sex --geno --mind
     
 else
     
-    plink --assoc counts --adjust --bfile merge --allow-no-sex --geno --mind
+    plink --hwe $thresh 'midp' --bfile merge --make-bed --out hwe_filter
+    
+    plink --assoc counts --adjust --bfile hwe_filter --allow-no-sex --geno --mind
     
 fi
-
