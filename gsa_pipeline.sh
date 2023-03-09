@@ -115,11 +115,8 @@ gzip -d all_files.vcf.gz
 echo "Creating plink binary files"
 plink --vcf all_files.vcf --keep-allele-order --vcf-idspace-to _ --const-fid --allow-extra-chr 0 --split-x $ref_code no-fail --allow-no-sex --make-bed --make-pheno $pheno '*' --out source1
 
-echo "Filtering variants that deviate from Hardy-Weinberg equilibrium"
-
-plink --hwe $thresh 'midp' --bfile source1 --make-bed --out hwe_filter
 
 echo "Plink asscoiation test"
 
-plink --assoc counts --adjust --bfile hwe_filter --allow-no-sex --geno --mind
+plink --assoc counts --adjust --hwe $thresh 'midp' --bfile source1 --allow-no-sex --geno --mind
 
