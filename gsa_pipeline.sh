@@ -1,6 +1,6 @@
 #!/bin/bash
 
-args=$(getopt --options x:b:c:e:i:g:r:R:p:h --longoptions iaap:bpm:csv:egt:idat:gtc:ref:ref_code:pheno:help -- "$@")
+args=$(getopt --options x:b:c:e:i:g:r:R:p:t:h --longoptions iaap:bpm:csv:egt:idat:gtc:ref:ref_code:pheno:thresh:help -- "$@")
 
 eval set -- "$args"
 
@@ -13,6 +13,7 @@ gtc="gtc_files"
 ref="hg19.fasta"
 ref_code="hg19" #human reference genome build code for PLINK : 'b36'/'hg18', 'b37'/'hg19', 'b38'/'hg38'
 pheno="pheno1.txt" #pheno.txt file with family and individual IDs of case samples in the first two columns
+thresh="1e-5"
 
 while :
 do
@@ -53,6 +54,10 @@ do
       pheno="$2"
       shift 2
       ;;
+    -t | --thresh )
+      thresh="$2"
+      shift 2
+      ;;
     -h | --help)
       echo "Converts illumina gsa raw idat files into vcf files, followed by case-control association analysis using PLINK.
       	gsa_pipeline Command-line Arguments
@@ -66,8 +71,9 @@ do
 	 -i,--idat <directory>    Directory with all idat files.
 	 -g,--gtc <directory>     Directory for saving gtc output.
 	 -r,--ref <file>          Human reference genome fasta file.
-	 -R,--ref_code <string>  Human reference genome build code for PLINK : 'b36'/'hg18', 'b37'/'hg19', 'b38'/'hg38'.
-	 -p,--pheno <file>        Text file with family and individual IDs of case samples in the first two columns."
+	 -R,--ref_code <string>   Human reference genome build code for PLINK : 'b36'/'hg18', 'b37'/'hg19', 'b38'/'hg38'.
+	 -p,--pheno <file>        Text file with family and individual IDs of case samples in the first two columns.
+	 -t,--thresh <float>      p-value threshold of Hardy-Weinberg equilibrium test for filtering out variants."
       exit 2
       ;;
     --)
@@ -109,7 +115,11 @@ gzip -d all_files.vcf.gz
 echo "Creating plink binary files"
 plink --vcf all_files.vcf --keep-allele-order --vcf-idspace-to _ --const-fid --allow-extra-chr 0 --split-x $ref_code no-fail --allow-no-sex --make-bed --make-pheno $pheno '*' --out source1
 
+echo "Filtering variants that deviate from Hardy-Weinberg equilibrium"
+
+plink --hwe $thresh 'midp' --bfile source1 --make-bed --out hwe_filter
+
 echo "Plink asscoiation test"
 
-plink --assoc counts --adjust --bfile source1 --allow-no-sex --geno --mind
+plink --assoc counts --adjust --bfile hwe_filter --allow-no-sex --geno --mind
 
