@@ -11,7 +11,6 @@ src1="source1"
 pheno="pheno2.txt" #phenotype file of the new dataset with family and individual IDs of case samples in the first two columns
 thresh="1e-5"
 
-
 while :
 do
   case "$1" in
@@ -96,15 +95,11 @@ if test -f "$file"; then
     rm source1_tmp.*
 
     rm source2_tmp.*
-
-    plink --hwe $thresh 'midp' --bfile final_merge --make-bed --out hwe_filter
     
-    plink --assoc counts --adjust --bfile hwe_filter --allow-no-sex --geno --mind
+    plink --assoc counts --adjust --hwe $thresh 'midp' --bfile final_merge --allow-no-sex --geno --mind
     
 else
     
-    plink --hwe $thresh 'midp' --bfile merge --make-bed --out hwe_filter
-    
-    plink --assoc counts --adjust --bfile hwe_filter --allow-no-sex --geno --mind
+    plink --assoc counts --adjust --hwe $thresh 'midp' --bfile merge --allow-no-sex --geno --mind
     
 fi
