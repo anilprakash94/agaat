@@ -80,9 +80,9 @@ subset_ld.py
 ### Running the software
 
 ```
-git clone https://github.com/anilprakash94/gsa_pipeline.git gsa_pipeline
+git clone https://github.com/anilprakash94/geno_array.git geno_array
 
-cd gsa_pipeline
+cd geno_array
 
 ```
 Then, run the programs according to the requirements and instructions listed in README.md.
@@ -202,9 +202,10 @@ optional arguments:
 
 ```
 
-Association analysis can be restricted to a prioritized gene subset, followed by multiple testing correcting using haplotype blocks
 
 ```
+Association analysis can be restricted to a prioritized gene subset, followed by multiple testing correcting using haplotype blocks
+
 python3 subset_ld.py -h
 usage: subset_ld.py [-h] [--block_file BLOCK_FILE] [--gene_list GENE_LIST]
                     [--dbsnp_common DBSNP_COMMON] [--plink_adj PLINK_ADJ]
