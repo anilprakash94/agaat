@@ -1,5 +1,5 @@
-# GSA pipeline
-* Pipeline for illumina gsa analysis.
+# Geno-Array
+* Automated Pipeline for illumina Global Screening (GSA) Array analysis.
 
 ## Dependencies
 
@@ -42,7 +42,7 @@
 
 ## Scripts
 
-**gsa_pipeline** has scripts for various gsa data analysis
+**geno_array** has scripts for various gsa data analysis
 
 The following scripts are available with this repo:
 ```
@@ -54,7 +54,7 @@ gsa_pipeline.sh
 ```
 merge_plink.sh
 
---Bash script pipeline for merging a separate set of vcf files with an existing binary fileset of PLINK
+--Bash script pipeline for merging separate set of vcf files with an existing binary fileset of PLINK
 ```
 
 ```
@@ -69,6 +69,11 @@ ld_blocks.py
 ---Python script for multiple testing correction using haplotype blocks estimated by PLINK
 ```
 
+```
+subset_ld.py
+
+---Python script for Prioritized subset analysis and multiple testing correcting using haplotype blocks
+```
 
 ## Usage
 
@@ -192,6 +197,32 @@ optional arguments:
                         plink --blocks output file with haplotype blocks and
                         variant IDs
   --assoc_adj ASSOC_ADJ
+                        plink file with adjusted associations
+  --out_file OUT_FILE   output file with ld-block based adjusted associations
+
+```
+
+Association analysis can be restricted to a prioritized gene subset, followed by multiple testing correcting using haplotype blocks
+
+```
+python3 subset_ld.py -h
+usage: subset_ld.py [-h] [--block_file BLOCK_FILE] [--gene_list GENE_LIST]
+                    [--dbsnp_common DBSNP_COMMON] [--plink_adj PLINK_ADJ]
+                    [--out_file OUT_FILE]
+
+Prioritized subset analysis and multiple testing correcting using haplotype
+blocks
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --block_file BLOCK_FILE
+                        plink --blocks output file with haplotype blocks and
+                        variant IDs
+  --gene_list GENE_LIST
+                        input file having list of genes
+  --dbsnp_common DBSNP_COMMON
+                        dbsnp vcf file with common variants
+  --plink_adj PLINK_ADJ
                         plink file with adjusted associations
   --out_file OUT_FILE   output file with ld-block based adjusted associations
 
