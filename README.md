@@ -48,7 +48,7 @@ The following scripts are available with this repo:
 ```
 gsa_pipeline.sh
 
---Bash script pipeline for converting raw idat files into vcf files
+--Bash script pipeline for converting raw idat files into vcf files, followed by case-control association analysis using PLINK
 ```
 
 ```
