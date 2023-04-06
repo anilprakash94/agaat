@@ -1,5 +1,5 @@
-# Geno-Array
-* Automated Pipeline for illumina Global Screening (GSA) Array analysis.
+# AGAAP
+* **A**utomated **G**enotyping **A**rray **A**nalysis **P**ipeline (AGAAP) for illumina Global Screening (GSA) Array analysis.
 
 ## Dependencies
 
@@ -42,7 +42,7 @@
 
 ## Scripts
 
-**geno_array** has scripts for various gsa data analysis
+**agaap** has scripts for various gsa data analysis
 
 The following scripts are available with this repo:
 ```
@@ -80,9 +80,9 @@ subset_ld.py
 ### Running the software
 
 ```
-git clone https://github.com/anilprakash94/geno_array.git geno_array
+git clone https://github.com/anilprakash94/agaap.git agaap
 
-cd geno_array
+cd agaap
 
 ```
 Then, run the programs according to the requirements and instructions listed in README.md.
