@@ -1,6 +1,6 @@
 #!/bin/bash
 
-args=$(getopt --options x:b:c:e:i:g:r:R:p:t:h --longoptions iaap:bpm:csv:egt:idat:gtc:ref:ref_code:pheno:thresh:help -- "$@")
+args=$(getopt --options x:b:c:e:i:g:r:R:p:t:h --longoptions iaap:,bpm:,csv:,egt:,idat:,gtc:,ref:,ref_code:,pheno:,thresh:,help -- "$@")
 
 eval set -- "$args"
 
@@ -119,4 +119,3 @@ plink --vcf all_files.vcf --keep-allele-order --vcf-idspace-to _ --const-fid --a
 echo "Plink asscoiation test"
 
 plink --assoc counts --adjust --hwe $thresh 'midp' --bfile source1 --allow-no-sex --geno --mind
-
