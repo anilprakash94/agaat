@@ -94,16 +94,17 @@ For example:
 bash gsa_pipeline.sh -h
 
 usage: bash gsa_pipeline.sh [OPTIONS]
-     -h,--help                Prints this message.
-     -x,--iaap <executable>   Illumina Array Analysis Platform Genotyping Command Line Interface Executable.
-     -b,--bpm <file>          Infinium Global Screening Array Manifest File - BPM Format.
-     -c,--csv <file>          Infinium Global Screening Array Manifest File - CSV Format.
-     -e,--egt <file>          Infinium Global Screening Array  Cluster File.
-     -i,--idat <directory>    Directory with all idat files.
-     -g,--gtc <directory>     Directory for saving gtc output.
-     -r,--ref <file>          Human reference genome fasta file.
-     -rc,--ref_code <string>  Human reference genome build code for PLINK : 'b36'/'hg18', 'b37'/'hg19', 'b38'/'hg38'.
-     -p,--pheno <file>        Text file with family and individual IDs of case samples in the first two columns.
+	 -h,--help                Prints this message.
+	 -x,--iaap <executable>   Illumina Array Analysis Platform Genotyping Command Line Interface Executable.
+	 -b,--bpm <file>          Infinium Global Screening Array Manifest File - BPM Format.
+	 -c,--csv <file>          Infinium Global Screening Array Manifest File - CSV Format.
+	 -e,--egt <file>          Infinium Global Screening Array  Cluster File.
+	 -i,--idat <directory>    Directory with all idat files.
+	 -g,--gtc <directory>     Directory for saving gtc output.
+	 -r,--ref <file>          Human reference genome fasta file.
+	 -R,--ref_code <string>   Human reference genome build code for PLINK : 'b36'/'hg18', 'b37'/'hg19', 'b38'/'hg38'.
+	 -p,--pheno <file>        Text file with family and individual IDs of case samples in the first two columns.
+	 -t,--thresh <float>      p-value threshold of Hardy-Weinberg equilibrium test for filtering out variants.
 
 ```
 --pheno file example: "pheno1.txt"
@@ -125,6 +126,7 @@ usage: bash merge_plink.sh [OPTIONS]
 	 -R,--ref_code <string>     Human reference genome build code for PLINK : 'b36'/'hg18', 'b37'/'hg19', 'b38'/'hg38'.
 	 -S,--src1 <file_prefix>    Prefix of existing PLINK binary fileset
 	 -p,--pheno <file>          Phenotype text file of the new fileset with family and individual IDs of case samples in the first two columns.
+         -t,--thresh <float>        p-value threshold of Hardy-Weinberg equilibrium test for filtering out variants.
 
 ```
 
