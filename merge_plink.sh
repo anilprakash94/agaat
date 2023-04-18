@@ -1,6 +1,6 @@
 #!/bin/bash
 
-args=$(getopt --options s:R:S:p:t:h --longoptions src2_vcf:ref_code:src1:pheno:thresh:help -- "$@")
+args=$(getopt --options s:R:S:p:t:h --longoptions src2_vcf:,ref_code:,src1:,pheno:,thresh:,help -- "$@")
 
 eval set -- "$args"
 
