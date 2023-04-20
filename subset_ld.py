@@ -35,7 +35,7 @@ def write_out(hap_blocks, cls_var, out_file):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Prioritized subset analysis and multiple testing correcting using haplotype blocks')
+    parser = argparse.ArgumentParser(description='Candidate gene association analysis and multiple testing correcting using haplotype blocks')
     parser.add_argument('--block_file', default = 'plink.blocks', help='plink --blocks output file with haplotype blocks and variant IDs')
     parser.add_argument('--gene_list', default = 'gene_list.txt', help='input file having list of genes')
     parser.add_argument('--dbsnp_common', default = 'common_all_20180418.vcf', help='dbsnp vcf file with common variants')
@@ -58,6 +58,6 @@ if __name__ == "__main__":
     print("Estimating number of independent markers using haplotype blocks...")
     hap_blocks = subset_var(cls_var, var_dict)
     
-    print("Creating output csv file with prioritized subset variants and their ld-based corrected p-value...")
+    print("Creating output csv file with candidate subset variants and their ld-based corrected p-value...")
     write_out(hap_blocks, cls_var, args.out_file)
     
