@@ -72,7 +72,7 @@ ld_blocks.py
 ```
 subset_ld.py
 
----Python script for Prioritized subset analysis and multiple testing correcting using haplotype blocks
+---Python script for candidate gene subset analysis and multiple testing correcting using haplotype blocks
 ```
 
 ## Usage
@@ -206,14 +206,14 @@ optional arguments:
 
 
 ```
-Association analysis can be restricted to a prioritized gene subset, followed by multiple testing correcting using haplotype blocks
+Association analysis can be restricted to a candidate gene subset, followed by multiple testing correcting using haplotype blocks
 
 python3 subset_ld.py -h
 usage: subset_ld.py [-h] [--block_file BLOCK_FILE] [--gene_list GENE_LIST]
                     [--dbsnp_common DBSNP_COMMON] [--plink_adj PLINK_ADJ]
                     [--out_file OUT_FILE]
 
-Prioritized subset analysis and multiple testing correcting using haplotype
+Candidate gene association analysis and multiple testing correcting using haplotype
 blocks
 
 optional arguments:
