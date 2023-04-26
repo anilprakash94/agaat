@@ -38,7 +38,6 @@ def rsidto_gene(plink_adj, loc_data, cls_genes):
         print("Plink output variant no.:", var_num)
         mut = i.split()
         var = mut[1]
-        unadj = mut[2]
         res = re.search(r'\brs\w+', var)
         if res:
             rsid = res.group()
