@@ -1,5 +1,5 @@
-# AGAAP
-* **A**utomated **G**enotyping **A**rray **A**nalysis **P**ipeline (AGAAP) for illumina Global Screening (GSA) Array analysis.
+# AGAAT
+* **A**utomated **G**enotyping **A**rray **A**nalysis **T**ool (AGAAT) for illumina Global Screening (GSA) Array analysis.
 
 ## Dependencies
 
@@ -42,7 +42,7 @@
 
 ## Scripts
 
-**agaap** has scripts for various gsa data analysis
+**agaat** has scripts for various gsa data analysis
 
 The following scripts are available with this repo:
 ```
@@ -80,9 +80,9 @@ subset_ld.py
 ### Running the software
 
 ```
-git clone https://github.com/anilprakash94/agaap.git agaap
+git clone https://github.com/anilprakash94/agaat.git agaat
 
-cd agaap
+cd agaat
 
 ```
 Then, run the programs according to the requirements and instructions listed in README.md.
