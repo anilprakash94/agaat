@@ -148,6 +148,7 @@ usage: bash merge_plink.sh [OPTIONS]
 
 ```
 
+```
 bash apmra_pipe.sh -h
 
 usage: bash apmra_pipe.sh [OPTIONS]
@@ -272,6 +273,16 @@ optional arguments:
 ```
 	
 Add genotype counts to control data followed by association test
+
+Run in bash the following command for repeated runs until completion (The program may terminate due to connectivity issues, "until" commmand will resume the runs automatically)
+#until python3 add_controls.py; do :; done
+
+#plink --freqx --bfile final_merge --allow-no-sex --filter-controls
+The above command produces "plink.frqx" genotype count report file for control samples
+
+The input file, "plink.assoc", can be sorted based on raw p-value and a new text file with the top variants can be used as input to reduce time requirements
+
+Output file from this code, 'assoc_1kgen_controls' can be used as an input instead of 'plink.assoc.adjusted' in other Python scripts with this repository
 	
 python3 add_controls.py -h
 usage: add_controls.py [-h] [--assoc_num ASSOC_NUM] [--assoc_file ASSOC_FILE]
