@@ -300,7 +300,7 @@ def assoc_test(var_file, thresh, case_num, assoc_num):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Add control sample allele data followed by association test')
+    parser = argparse.ArgumentParser(description='Add genotype counts to control data followed by association test')
     parser.add_argument("--assoc_num", type=int, help="number of variants in the input file, give value as 0 if entire plink.assoc file is used as input")
     parser.add_argument('--assoc_file', default = 'plink.assoc', help='plink association output file')
     parser.add_argument('--frqx_file', default = 'plink.frqx', help='plink genotype count report file')
