@@ -128,11 +128,11 @@ usage: bash gsa_pipeline.sh [OPTIONS]
 --pheno file example: "pheno1.txt"
 
 ```
-FID  IID
-0	205247220003_R01C01
-0	205247220003_R01C02
-0	205247220003_R02C01
-0	205247220003_R02C02
+FID IID
+0 205247220003_R01C01
+0 205247220003_R01C02
+0 205247220003_R02C01
+0 205247220003_R02C02
 ```
 
 ```
@@ -149,7 +149,6 @@ usage: bash merge_plink.sh [OPTIONS]
 ```
 
 bash apmra_pipe.sh -h
-
 
 usage: bash apmra_pipe.sh [OPTIONS]
 	 -h,--help                Prints this message.
@@ -244,7 +243,6 @@ optional arguments:
 
 ```
 
-
 ```
 Association analysis can be restricted to a candidate gene subset, followed by multiple testing correcting using haplotype blocks
 
@@ -268,5 +266,38 @@ optional arguments:
   --plink_adj PLINK_ADJ
                         plink file with adjusted associations
   --out_file OUT_FILE   output file with ld-block based adjusted associations
+
+```
+
+```
+	
+Adds genotype counts to control data followed by association test
+	
+python3 add_controls.py -h
+usage: add_controls.py [-h] [--assoc_num ASSOC_NUM] [--assoc_file ASSOC_FILE]
+                       [--frqx_file FRQX_FILE] [--thresh THRESH]
+                       [--case_num CASE_NUM] [--out_file OUT_FILE]
+                       [--pop_codes POP_CODES] [--var_file VAR_FILE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --assoc_num ASSOC_NUM
+                        number of variants in the input file, give value as 0
+                        if entire plink.assoc file is used as input
+  --assoc_file ASSOC_FILE
+                        plink association output file
+  --frqx_file FRQX_FILE
+                        plink genotype count report file
+  --thresh THRESH       p-value threshold of Hardy-Weinberg equilibrium test
+                        for filtering out variants
+  --case_num CASE_NUM   number of case samples
+  --out_file OUT_FILE   output file with hwe filtered and adjusted
+                        associations
+  --pop_codes POP_CODES
+                        codes of 1000 genome phase-3 populations from which
+                        control genotype counts will be added, comma-separated
+  --var_file VAR_FILE   text file having variant data in which genotype counts
+                        are already added
+
 
 ```
