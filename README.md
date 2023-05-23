@@ -1,5 +1,5 @@
 # AGAAT
-* **A**utomated **G**enotyping **A**rray **A**nalysis **T**ool (AGAAT) for illumina Global Screening (GSA) Array analysis.
+* **A**utomated **G**enotyping **A**rray **A**nalysis **T**ool (AGAAT) for Genotyping Array analysis.
 
 ## Dependencies
 
@@ -9,13 +9,15 @@
 
 * Illumina Array Analysis Platform Genotyping Command Line Interface (iaap-cli) (v1.1)
 
+* Affymetrix Analysis Power Tools (APT) (apt_2.11.6_linux_64_bit_x86_binaries.zip)
+
 * PLINK (v1.90b6.21)
 
 * samtools (1.12)
 
 * bcftools (1.16)
 
-* bcftools +gtc2vcf (version 2022-12-21 https://github.com/freeseek/gtc2vcf)
+* bcftools +gtc2vcf and +affy2vcf (version 2022-12-21 https://github.com/freeseek/gtc2vcf)
 
 * gzip 
 
@@ -34,6 +36,10 @@
 
 * idat_files (directory having all idat files)
 
+* cel_files (directory having all cel files)
+
+* Axiom APMRA Analysis and Annotation files
+
 * phenotype(--pheno pheno1.txt) file with family and individual IDs of case samples in the first two columns
 
 * dbsnp database vcf file (--dbsnp_common "common_all_20180418.vcf") with all the common variants
@@ -42,7 +48,7 @@
 
 ## Scripts
 
-**agaat** has scripts for various gsa data analysis
+**agaat** has scripts for various genotyping array data analysis
 
 The following scripts are available with this repo:
 ```
@@ -55,6 +61,12 @@ gsa_pipeline.sh
 merge_plink.sh
 
 --Bash script pipeline for merging separate set of vcf files with an existing binary fileset of PLINK
+```
+
+```
+apmra_pipe.sh
+
+--Bash script pipeline for converting raw cel files of APMRA into vcf files, followed by case-control association analysis using PLINK
 ```
 
 ```
@@ -73,6 +85,12 @@ ld_blocks.py
 subset_ld.py
 
 ---Python script for candidate gene subset analysis and multiple testing correcting using haplotype blocks
+```
+
+```
+add_controls.py
+
+---Python script for adding genotype counts from 1000 genome phase-3 populations to control data
 ```
 
 ## Usage
@@ -130,6 +148,28 @@ usage: bash merge_plink.sh [OPTIONS]
 
 ```
 
+bash apmra_pipe.sh -h
+
+
+usage: bash apmra_pipe.sh [OPTIONS]
+	 -h,--help                Prints this message.
+	 -i,--cel_dir <dir>       Directory with input .cel files.
+	 -a,--an_zip <file>       Compressed zip file having all the analysis files.
+	 -x,--an_dir <dir>        Directory with all the analysis files.
+	 -z,--annot_zip <file>    Compressed zip file having all the annotation files.
+	 -d,--dqc_xml <file>      XML having paramaters for DQC value generation.
+	 -c,--cr_xml <file>       XML having paramaters for QC call rates.
+	 -s,--summ_xml <file>     XML having paramaters for summary intensity signals.
+	 -n,--cnv_xml <file>      XML having paramaters for CNV analysis.
+	 -g,--geno_xml <file>     XML having paramaters for genotype calls.
+	 -o,--annot_csv <file>    Annotation file in CSV format.
+	 -r,--ref_gen <file>      Human reference genome fasta file.
+	 -v,--out_vcf <file>      Output VCF file generated from .txt files.
+	 -p,--pheno <file>        Text file (space-delimited) with family and individual IDs of case samples in the first two columns.
+	 -R,--ref_code <string>   Human reference genome build code for PLINK : 'b36'/'hg18', 'b37'/'hg19', 'b38'/'hg38'.
+	 -t,--thresh <float>      P-value threshold of Hardy-Weinberg equilibrium test for filtering out variants.
+
+```
 
 ```
 python3 plink_categ_assoc.py -h
