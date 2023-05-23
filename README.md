@@ -271,7 +271,7 @@ optional arguments:
 
 ```
 	
-Adds genotype counts to control data followed by association test
+Add genotype counts to control data followed by association test
 	
 python3 add_controls.py -h
 usage: add_controls.py [-h] [--assoc_num ASSOC_NUM] [--assoc_file ASSOC_FILE]
