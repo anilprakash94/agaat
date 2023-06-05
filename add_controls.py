@@ -264,8 +264,8 @@ def case_ctrl(case_min, case_max, ctrl_min, ctrl_max):
     exp = [exp_camin, exp_camax, exp_ctmin, exp_ctmax]
     cst_assoc, pval_assoc = chisquare(f_obs=obs,f_exp=exp,ddof=2)
     #Haldane correction to avoid division by zero error.
-    numer = (case_min + 0.5) / (case_max + 0.5)
-    denom = (ctrl_min + 0.5) / (ctrl_max + 0.5)
+    numer = (case_min + 0.5) / (ctrl_min + 0.5)
+    denom = (case_max + 0.5) / (ctrl_max + 0.5)
     odds_ratio = numer / denom
     return cst_assoc, pval_assoc, odds_ratio
 
