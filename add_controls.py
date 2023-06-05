@@ -301,7 +301,7 @@ def assoc_test(var_file, thresh, case_num, assoc_num):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Add genotype counts to control data followed by association test')
-    parser.add_argument("--assoc_num", type=int, help="number of variants in the input file, give value as 0 if entire plink.assoc file is used as input")
+    parser.add_argument("--assoc_num", type=int, default=0, help="number of variants for multiple-testing correction, default value = 0 means variants in the input file is used for correction")
     parser.add_argument('--assoc_file', default = 'plink.assoc', help='plink association output file')
     parser.add_argument('--frqx_file', default = 'plink.frqx', help='plink genotype count report file')
     parser.add_argument('--thresh', type=int, default=1e-5, help='p-value threshold of Hardy-Weinberg equilibrium test for filtering out variants')
