@@ -16,7 +16,7 @@ cr_xml="Axiom_APMRA_SNPSpecificPriors_Step1.r3.apt-genotype-axiom.AxiomGT1.apt2.
 summ_xml="Axiom_APMRA.r3.apt-genotype-axiom.AxiomCN_GT1.apt2.xml"
 cnv_xml="Axiom_APMRA.r3.apt-copynumber-axiom-hmm.AxiomHMM.apt2.xml"
 geno_xml="Axiom_APMRA_SNPSpecificPriors_Step2.r3.apt-genotype-axiom.AxiomGT1.apt2.xml"
-annot_csv="/home/affymetrix/analysis_files/Axiom_APMRA.na35.r3.a2.annot.csv"
+annot_csv="Axiom_APMRA.na35.r3.a2.annot.csv"
 ref_gen="/home/hg19.fasta"
 out_vcf="/home/affymetrix/test/cel_files/affy_files.vcf"
 pheno="/home/affymetrix/test/cel_files/pheno.txt" 
@@ -232,7 +232,7 @@ samtools faidx $ref_gen
 echo -e "\nConverting .txt output files from APT to VCF\n"
  
 bcftools +affy2vcf \
-    --csv $annot_csv \
+    --csv $an_dir"/"$annot_csv \
     --fasta-ref $ref_gen \
     --calls $cel_dir"/step2/AxiomGT1.calls.txt" \
     --confidences $cel_dir"/step2/AxiomGT1.confidences.txt" \
