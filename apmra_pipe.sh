@@ -256,7 +256,7 @@ echo -e "\nCreating plink binary files\n"
 plink --vcf $out_vcf --keep-allele-order --vcf-idspace-to _ --const-fid --allow-extra-chr 0 --split-x $ref_code no-fail --allow-no-sex --make-bed --make-pheno $cel_dir"/pheno_filtered.txt" '*' --out $cel_dir"/source1"
 
 
-echo -e "\nPlink asscoiation test\n"
+echo -e "\nPlink association test\n"
 
 plink --assoc counts --adjust --hwe $thresh 'midp' --bfile $cel_dir"/source1" --allow-no-sex --geno --mind
 
