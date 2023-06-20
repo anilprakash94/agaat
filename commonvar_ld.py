@@ -2,7 +2,7 @@ import pandas as pd
 import re
 import argparse
 
-from plink_categ_assoc import *
+from common_var import *
 from ld_blocks import *
 
 
@@ -35,7 +35,7 @@ def write_out(hap_blocks, cls_var, out_file):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Candidate gene association analysis and multiple testing correcting using haplotype blocks')
+    parser = argparse.ArgumentParser(description='Candidate-gene common-variant association analysis and multiple testing correcting using haplotype blocks')
     parser.add_argument('--block_file', default = 'plink.blocks', help='plink --blocks output file with haplotype blocks and variant IDs')
     parser.add_argument('--gene_list', default = 'gene_list.txt', help='input file having list of genes')
     parser.add_argument('--dbsnp_common', default = 'common_all_20180418.vcf', help='dbsnp vcf file with common variants')
