@@ -45,6 +45,25 @@
 * dbsnp database vcf file (--dbsnp_common "common_all_20180418.vcf") with all the common variants
 
 * gene list (--gene_list "gene_list.txt") for selecting markers belonging to the specified category of genes
+  
+* gene_bed file (bed file with genomic coordinates of genes), can be downloaded from UCSC table browser as UCSC_canonical.bed
+
+```
+
+  The file UCSC_canonical.bed looks like:
+
+#hg19.knownCanonical.chrom      hg19.knownCanonical.chromStart  hg19.knownCanonical.chromEnd    hg19.knownCanonical.transcript  hg19.kgXref.geneSymbol
+chr1    11873   14409   uc010nxq.1      DDX11L1
+chr1    14361   19759   uc009viu.3      WASH7P
+chr1    14406   29370   uc009viw.2      WASH7P
+chr1    34610   36081   uc001aak.3      FAM138F
+chr1    69090   70008   uc001aal.1      OR4F5
+chr1    134772  140566  uc021oeg.2      LOC729737
+chr1    321083  321115  uc001aaq.2      DQ597235
+chr1    321145  321207  uc001aar.2      DQ599768
+chr1    322036  326938  uc009vjk.2      LOC100133331
+
+```
 
 ## Scripts
 
