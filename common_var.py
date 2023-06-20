@@ -68,7 +68,7 @@ def create_csv(cls_var, out_file):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Multiple testing correction using genetic variants belonging to a category of genes')
+    parser = argparse.ArgumentParser(description='Multiple testing correction using common variants belonging to a list of genes')
     parser.add_argument('--gene_list', default = 'gene_list.txt', help='input file having list of genes')
     parser.add_argument('--dbsnp_common', default = 'common_all_20180418.vcf', help='dbsnp vcf file with common variants')
     parser.add_argument('--plink_adj', default = 'plink.assoc.adjusted', help='plink file with adjusted associations')
