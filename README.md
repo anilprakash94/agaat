@@ -50,7 +50,7 @@
 
 ```
 
-  The file UCSC_canonical.bed looks like:
+  Top lines of UCSC_canonical.bed file:
 
 #hg19.knownCanonical.chrom      hg19.knownCanonical.chromStart  hg19.knownCanonical.chromEnd    hg19.knownCanonical.transcript  hg19.kgXref.geneSymbol
 chr1    11873   14409   uc010nxq.1      DDX11L1
