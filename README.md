@@ -70,7 +70,7 @@ apmra_pipe.sh
 ```
 
 ```
-plink_categ_assoc.py
+candidate_gene.py
 
 --Python script for multiple testing correction using genetic variants belonging to a category of genes
 ```
@@ -82,9 +82,21 @@ ld_blocks.py
 ```
 
 ```
-subset_ld.py
+candidate_ld.py
 
 ---Python script for candidate gene subset analysis and multiple testing correcting using haplotype blocks
+```
+
+```
+common_var.py
+
+---Python script for multiple testing correction using common variants belonging to a list of genes 
+```
+
+```
+commonvar_ld.py
+
+---Python script for candidate-gene, common-variant association analysis and multiple testing correcting using haplotype blocks
 ```
 
 ```
@@ -172,11 +184,10 @@ usage: bash apmra_pipe.sh [OPTIONS]
 ```
 
 ```
-python3 plink_categ_assoc.py -h
+python3 candidate_gene.py -h
 
-usage: plink_categ_assoc.py [-h] [--gene_list GENE_LIST]
-                            [--dbsnp_common DBSNP_COMMON]
-                            [--plink_adj PLINK_ADJ] [--out_file OUT_FILE]
+usage: candidate_gene.py [-h] [--gene_list GENE_LIST] [--gene_bed GENE_BED]
+                         [--plink_assoc PLINK_ASSOC] [--out_file OUT_FILE]
 
 Multiple testing correction using genetic variants belonging to a category of
 genes
@@ -185,13 +196,14 @@ optional arguments:
   -h, --help            show this help message and exit
   --gene_list GENE_LIST
                         input file having list of genes
-  --dbsnp_common DBSNP_COMMON
-                        dbsnp vcf file with common variants
-  --plink_adj PLINK_ADJ
-                        plink file with adjusted associations
-  --out_file OUT_FILE   output file with gene-list based adjusted associations
+  --gene_bed GENE_BED   bed file with genomic coordinates of genes
+  --plink_assoc PLINK_ASSOC
+                        plink association output file
+  --out_file OUT_FILE   output file with gene-list based associations
+
 
 ```
+--gene_bed can be extracted from UCSC table browser
 
 --gene_list file example: "gene_list.txt"
 
@@ -247,19 +259,57 @@ optional arguments:
 ```
 Association analysis can be restricted to a candidate gene subset, followed by multiple testing correcting using haplotype blocks
 
-python3 subset_ld.py -h
-usage: subset_ld.py [-h] [--block_file BLOCK_FILE] [--gene_list GENE_LIST]
-                    [--dbsnp_common DBSNP_COMMON] [--plink_adj PLINK_ADJ]
-                    [--out_file OUT_FILE]
+python3 candidate_ld.py -h
+usage: candidate_ld.py [-h] [--block_file BLOCK_FILE] [--gene_list GENE_LIST] [--gene_bed GENE_BED]
+                       [--plink_assoc PLINK_ASSOC] [--out_file OUT_FILE]
 
-Candidate gene association analysis and multiple testing correcting using haplotype
-blocks
+Candidate gene association analysis and multiple testing correcting using haplotype blocks
 
 optional arguments:
   -h, --help            show this help message and exit
   --block_file BLOCK_FILE
-                        plink --blocks output file with haplotype blocks and
-                        variant IDs
+                        plink --blocks output file with haplotype blocks and variant IDs
+  --gene_list GENE_LIST
+                        input file having list of genes
+  --gene_bed GENE_BED   bed file with genomic coordinates of genes
+  --plink_assoc PLINK_ASSOC
+                        plink association output file
+  --out_file OUT_FILE   output file with gene-list based associations
+
+  --out_file OUT_FILE   output file with ld-block based adjusted associations
+
+```
+
+```
+python3 common_var.py -h
+usage: common_var.py [-h] [--gene_list GENE_LIST] [--dbsnp_common DBSNP_COMMON] [--plink_adj PLINK_ADJ]
+                     [--out_file OUT_FILE]
+
+Multiple testing correction using common variants belonging to a list of genes
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --gene_list GENE_LIST
+                        input file having list of genes
+  --dbsnp_common DBSNP_COMMON
+                        dbsnp vcf file with common variants
+  --plink_adj PLINK_ADJ
+                        plink file with adjusted associations
+  --out_file OUT_FILE   output file with gene-list based adjusted associations
+
+```
+
+```
+python3 commonvar_ld.py -h
+usage: commonvar_ld.py [-h] [--block_file BLOCK_FILE] [--gene_list GENE_LIST] [--dbsnp_common DBSNP_COMMON]
+                       [--plink_adj PLINK_ADJ] [--out_file OUT_FILE]
+
+Candidate-gene common-variant association analysis and multiple testing correcting using haplotype blocks
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --block_file BLOCK_FILE
+                        plink --blocks output file with haplotype blocks and variant IDs
   --gene_list GENE_LIST
                         input file having list of genes
   --dbsnp_common DBSNP_COMMON
