@@ -304,7 +304,7 @@ if __name__ == "__main__":
     parser.add_argument("--assoc_num", type=int, default=0, help="number of variants for multiple-testing correction, default value = 0 means variants in the input file is used for correction")
     parser.add_argument('--assoc_file', default = 'plink.assoc', help='plink association output file')
     parser.add_argument('--frqx_file', default = 'plink.frqx', help='plink genotype count report file')
-    parser.add_argument('--thresh', type=int, default=1e-5, help='p-value threshold of Hardy-Weinberg equilibrium test for filtering out variants')
+    parser.add_argument('--thresh', type=float, default=1e-5, help='p-value threshold of Hardy-Weinberg equilibrium test for filtering out variants')
     parser.add_argument('--case_num', type=int, default=500, help='number of case samples')
     parser.add_argument('--out_file', default = 'assoc_1kgen_controls', help='output file with hwe filtered and adjusted associations')
     parser.add_argument('--pop_codes', default = 'ITU,STU', help='codes of 1000 genome phase-3 populations from which control genotype counts will be added, comma-separated')
